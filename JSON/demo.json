@@ -1,0 +1,174 @@
+"--Json structure and its method"
+{
+	"users":
+		[
+			{
+				"firstName" : "Charles",
+				"lastName"  : "Kimaro",
+				"age" : 31,
+				"hobbies" : ["reading","writing"],
+				"friends"  : [
+								{
+									"firstName" : "Jenipha",
+									"lastName" : "Adauthy"
+								
+								}
+							 ]
+			},
+			{
+				"firstName" : "Joan",
+				"lastName"  : "Charles",
+				"age" : 3
+			}
+		],
+	"subjects" :
+		[
+			{
+				"name" : "Automation",
+				"id" : 1
+			},
+			{
+				"name" : "Automation",
+				"id" : 2
+			}			
+		]
+}
+
+"--Json Validation"
+"https://jsonlint.com/ ,https://jsonformatter.curiousconcept.com/"
+"json beautfy: https://codebeautify.org/jsonviewer"
+
+"Json Path -- https://jsonpathfinder.com/ chrome extension --Json path"
+
+"after getting the path from pathfinder you can use -- JSONPath Online Evaluator - jsonpath.com"
+
+
+
+"JSON SCHEMA-- are json document that describe other json document
+"https://www.liquid-technologies.com/online-json-to-schema-converter  - generator a schema from json document"
+
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "users": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "firstName": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            },
+            "age": {
+              "type": "integer"
+            },
+            "hobbies": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "friends": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "firstName": {
+                      "type": "string"
+                    },
+                    "lastName": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "firstName",
+                    "lastName"
+                  ]
+                }
+              ]
+            }
+          },
+          "required": [
+            "firstName",
+            "lastName",
+            "age",
+            "hobbies",
+            "friends"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "firstName": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            },
+            "age": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "firstName",
+            "lastName",
+            "age"
+          ]
+        }
+      ]
+    },
+    "subjects": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "name",
+            "id"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "name",
+            "id"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "users",
+    "subjects"
+  ]
+}
+
+"https://www.jsonschemavalidator.net/  - Json Schema validator"
+
+"Regula expresion validator"

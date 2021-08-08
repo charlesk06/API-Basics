@@ -1,0 +1,9 @@
+--Json Basic
+Java Script Object Notation(JSON)
+way of communicate data with a specific rule
+
+JSON is build into 2 structure
+-A collection of name value (Object)
+-ordered list of value (array)
+
+object   {"key":"value"} -->  {"name":"charles"}
