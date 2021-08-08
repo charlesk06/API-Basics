@@ -1,0 +1,13 @@
+ Volume in drive C has no label.
+ Volume Serial Number is 0618-D6B3
+
+ Directory of C:\Users\charles.kimaro.TIGO\Desktop\MFSCC Tools\Progaming Course\GIT & GITHUB\MyProject
+
+08/08/2021  04:45 AM    <DIR>          .
+08/08/2021  04:45 AM    <DIR>          ..
+08/08/2021  03:47 AM               462 index.html
+08/08/2021  04:12 AM               516 sylesheet.css
+08/08/2021  04:11 AM               439 test.txt
+08/08/2021  04:45 AM                 0 test2.txt
+               4 File(s)          1,417 bytes
+               2 Dir(s)  24,244,322,304 bytes free
