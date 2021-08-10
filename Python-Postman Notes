@@ -1,0 +1,36 @@
+  DONT REPEAT YOURSELF
+
+ BETTER PGORAMING YOU MUST ARRANGE CODE INTO CLASSES, FUNCTIONA AND MODULE
+
+package is a container for multiple modules
+
+python library --->Google
+
+python 3 module index
+
+how to work with directories in python
+
+pathlib library
+absolute path -- path from root of c hard drive
+Relative Path -- path started from the currently directory
+
+Pypi and Pip
+--pypi.org
+pip install openxls
+python -m pip install --user --upgrade pip
+
+POSTMAN 
+
+https://api.github.com --or authorization
+
+authentication - who you are
+authorization- what can you do
+wsdl - web service description language
+How to creat API document through wsdl
+--http://www.thomas-bayer.com/axis2/services/BLZService?wsdl
+---https://tomi.vanek.sk/
+
+WSDL Compare  old vs new wsdl
+http://www.service-reposotory.com/comparator/compareWSDL
+
+
