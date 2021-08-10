@@ -1,0 +1,39 @@
+create table tmp_success_oct as
+select sum(counts) sotal_s, service,left(dtime,10) tarehe from dboard_data where 
+dtime between '2020-10-01 00:00:00' and '2020-10-31 23:59:59'
+and  (status like 'PST%' OR status='RFD')
+group by service,left(dtime,10);
+
+create table tmp_tot_oct as
+select sum(counts) sotal_a, service,gateway,left(dtime,10) tarehe from dboard_data where 
+dtime between '2020-10-01 00:00:00' and '2020-10-31 23:59:59'
+group by service,left(dtime,10),gateway;
+
+
+select round((a.sotal_s/b.sotal_a)*100, 2) as '%_SR',b.tarehe,c.service_group,b.sotal_a as tot_trans
+from tmp_success_oct a, tmp_tot_oct b, services_summary_monthly_report c
+where a.tarehe=b.tarehe and a.service=b.service
+and c.SERVICE_NAME=b.service
+group by b.tarehe,b.sotal_a,c.service_group;
+
+
+
+select * from services_summary_monthly_report where service_group  in 
+('Precision Air',
+'Air Tanzania',
+'DSTV',
+'TTCL AirTime',
+'Azam TV',
+'Amana',
+'Postpaid Payment',
+'CRDB',
+'Malipo ya Serikali',
+'EasyPesa',
+'T-Pesa',
+'NMB',
+'MasterPass',
+'Luku GePG',
+'Regional IMT',
+'Airtel',
+'M-Pesa',
+'HaloPesa')

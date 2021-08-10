@@ -1,0 +1,100 @@
+//for Web
+
+Step 1: Login to the server with your user
+
+Step 2: su - root;
+
+Step 3: cd /tmp;
+
+Step 4: timestamp=`date +%Y%m%d%H%M%S`;
+
+Step 5: mkdir IntWeb1_$timestamp;
+
+Step 6: cd /telepin/webadmin/apache-tomcat-7.0.54/;
+
+Step 7: cp -r bin /tmp/IntWeb1_$timestamp/;
+
+Step 8: cp -r lib /tmp/IntWeb1_$timestamp/;
+
+Step 9: cp -r conf /tmp/IntWeb1_$timestamp/;
+
+Step 10: cp -r work /tmp/IntWeb1_$timestamp/;
+
+Step 11: cp -r webapps /tmp/IntWeb1_$timestamp/;
+
+Step 12: tar -cvf IntWeb1_$timestamp.tar IntWeb1_$timestamp;
+
+step 13: gzip IntWeb1_$timestamp.tar;
+
+//After successful step 10 Above you will get something like IntWeb1_20201110100610.tar.gz
+
+Step 14: chmod 777 IntWeb1_$timestamp.tar.gz;
+
+Step 15: Download the file obtained in step(10) to your local computer(10.222.10.183)
+
+Step 16: rm IntWeb1_$timestamp.tar.gz;
+
+//Done with Web side
+
+Step 17: login to the sftp server 41.222.176.210
+
+Step 18: sudo su - root;
+
+Step 19: cd /data/TP;
+
+Step 20: Upload the files from your local computer to the server in the path mentioned above(16)
+
+//Done with sftp server
+
+Lastly delete the backup files from your local computer, 
+
+Above steps is same apply in every web Application.
+
+
+
+
+//For TCS
+
+Step 1: Login to the server with your user
+
+Step 2: su - root;
+
+Step 3: cd /data;
+
+Step 4: timestamp=`date +%Y%m%d%H%M%S`;
+
+Step 5: mkdir TCS1_$timestamp;
+
+Step 6: cd /telepin/;
+
+Step 7: cp -r TCS /data/TCS1_$timestamp/;
+
+Step 8: cp -r SS7 /data/TCS1_$timestamp/;
+
+Step 9: tar -cvf TCS1_$timestamp.tar TCS1_$timestamp;
+
+step 10: gzip TCS1_$timestamp.tar;
+
+//After successful step 10 Above you will get something like 20201110100610.tar.gz
+
+Step 11: chmod 777 TCS1_$timestamp.tar.gz;
+
+Step 12: Download the files obtained in step(10) to your local computer(10.222.10.183)
+
+Step 13: rm TCS1_$timestamp.tar.gz;
+
+//Done with TCS side
+
+Step 14: login to the sftp server 41.222.176.210
+
+Step 15: sudo su - root;
+
+Step 16: cd /data/TP;
+
+Step 17: Upload the files from your local computer to the server in the path mentioned above(16)
+
+//Done with sftp server
+
+Lastly delete the backup file from your local computer, 
+
+Above steps is same apply in every TCS server, Hence apply the same for TCS2 as well.

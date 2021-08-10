@@ -1,0 +1,6 @@
+
+
+SELECT date_format(dtime, '%H:%i') as dtimef,date_format(dtime, '%Y-%m-%d %H:%i') as dtimec,count(data_id) AS tt_trans FROM dboard_data WHERE 1=1 AND dtime>='2017-10-01 00:00:00' GROUP BY Date(dtime),HOUR(dtime) ORDER BY `dtime` ASC 
+
+SELECT count(data_id) AS tt_PST FROM dboard_data WHERE dtime>='2017-10-01 00:00:00' AND date_format(dtime, '%Y-%m-%d %H:')='2017-10-01 00:' AND status LIKE 'PST%';
+

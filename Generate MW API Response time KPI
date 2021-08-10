@@ -1,0 +1,23 @@
+
+Team, Below are the steps to generate MW API response time KPI
+
+1. There is automated script "middleware_edr_processor.sh" in 10.76.107.155 under /oracle/scripts path (runs under ora11g user every hour) which pull data from 3 MW servers and load into oracle database 10.76.107.164 1521
+2. The data are loaded into a table with a name "middleware_api_cdr"
+3. To prepare a KPI for API response time you can use below queries
+
+i. create temp table for the specific date of interest
+
+create table tmp_mw_010220 as
+select trans_date,api, count(*)counts,
+to_char(begintime, 'hh24')HH24,
+round(avg (to_date(to_char(endtime, 'hh24:mi:ss'), 'hh24:mi:ss') - to_date(to_char(begintime, 'hh24:mi:ss'), 'hh24:mi:ss')) * 24*60*60,2) avg_secs,
+round(max (to_date(to_char(endtime, 'hh24:mi:ss'), 'hh24:mi:ss') - to_date(to_char(begintime, 'hh24:mi:ss'), 'hh24:mi:ss')) * 24*60*60,2) max_secs,
+round(min (to_date(to_char(endtime, 'hh24:mi:ss'), 'hh24:mi:ss') - to_date(to_char(begintime, 'hh24:mi:ss'), 'hh24:mi:ss')) * 24*60*60,2) min_secs
+from middleware_api_cdr where trans_date ='01-feb-20'
+group by api,trans_date,to_char(begintime, 'hh24')
+
+ii. check APIs with high response time.
+
+select * from tmp_mw_010220 where avg_secs >10 or max_secs >30
+
+iii. Save data into excel and plot charts. use "tps-01022020MS.xls" as sample 

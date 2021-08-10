@@ -1,0 +1,83 @@
+
+SQL*Loader: Release 11.2.0.4.0 - Production on Tue Nov 26 14:35:23 2019
+
+Copyright (c) 1982, 2011, Oracle and/or its affiliates.  All rights reserved.
+
+Control File:   /oracle/scripts/edr.ctl
+Data File:      /oracle/scripts/files/EDR_01_091019.csv
+  Bad File:     /oracle/scripts/edr_bad.log
+  Discard File:  none specified
+ 
+ (Allow all discards)
+
+Number to load: ALL
+Number to skip: 0
+Errors allowed: 1000000
+Bind array:     2000 rows, maximum of 20000000 bytes
+Continuation:    none specified
+Path used:      Conventional
+Silent options: FEEDBACK
+Table EDR_FCT_TRANSACTION, loaded from every logical record.
+Insert option in effect for this table: APPEND
+TRAILING NULLCOLS option in effect
+
+   Column Name                  Position   Len  Term Encl Datatype
+------------------------------ ---------- ----- ---- ---- ---------------------
+SEQUENCE_NUMBER                     FIRST     *   |  O(") CHARACTER            
+SENDER_MSISDN                        NEXT     *   |  O(") CHARACTER            
+RECEIVER_MSISDN_ACC                  NEXT     *   |  O(") CHARACTER            
+RECEIVER_USER_ID                     NEXT     *   |  O(") CHARACTER            
+SENDER_USER_ID                       NEXT     *   |  O(") CHARACTER            
+TRANSACTION_AMOUNT                   NEXT     *   |  O(") CHARACTER            
+SERVICE_CHARGE                       NEXT     *   |  O(") CHARACTER            
+SERVICE_TYPE                         NEXT     *   |  O(") CHARACTER            
+TRANSFER_STATUS                      NEXT     *   |  O(") CHARACTER            
+SENDER_PRE_BAL                       NEXT     *   |  O(") CHARACTER            
+SENDER_POST_BAL                      NEXT     *   |  O(") CHARACTER            
+RECEIVER_PRE_BAL                     NEXT     *   |  O(") CHARACTER            
+RECEIVER_POST_BAL                    NEXT     *   |  O(") CHARACTER            
+ERROR_CODE                           NEXT     *   |  O(") CHARACTER            
+ERROR_DESC                           NEXT     *   |  O(") CHARACTER            
+TRANSFER_ID                          NEXT     *   |  O(") CHARACTER            
+TRANSFER3_DATE                       NEXT     *   |  O(") CHARACTER            
+TRANSFER_TIME                        NEXT     *   |  O(") CHARACTER            
+SERVICE_CHARGE_CODE                  NEXT     *   |  O(") CHARACTER            
+SENDER_CATEGORY_CODE                 NEXT     *   |  O(") CHARACTER            
+RECEIVER_CATEGORY_CODE               NEXT     *   |  O(") CHARACTER            
+LOCATIONID                           NEXT     *   |  O(") CHARACTER            
+SUBTYPE                              NEXT     *   |  O(") CHARACTER            
+SERVICETYPE                          NEXT     *   |  O(") CHARACTER            
+TRANS_DATE                           NEXT     *   |  O(") DATE YYYYMMDDHH24MISS
+CUSTOMERMSISDN                       NEXT     *   |  O(") CHARACTER            
+AGENTCOMMISSION                      NEXT     *   |  O(") CHARACTER            
+SUPERAGENTCOMMISSION                 NEXT     *   |  O(") CHARACTER            
+EXPRESSAGENTCOMMISSION               NEXT     *   |  O(") CHARACTER            
+ORIGINATIONCELLID                    NEXT     *   |  O(") CHARACTER            
+EXT_TXN_NUMBER                       NEXT     *   |  O(") CHARACTER            
+RECEIVER_MSISDN                      NEXT     *   |  O(") CHARACTER            
+TRANSFER_DATE                        NEXT     *   |  O(") DATE YYYYMMDDHH24MISS
+ORIGINAL_TRANSACTION_ID              NEXT     *   |  O(") CHARACTER            
+BRAND_GROUP_NAME                     NEXT     *   |  O(") CHARACTER            
+BRAND_GROUP_ID                       NEXT     *   |  O(") CHARACTER            
+
+
+Table EDR_FCT_TRANSACTION:
+  12383700 Rows successfully loaded.
+  0 Rows not loaded due to data errors.
+  0 Rows not loaded because all WHEN clauses were failed.
+  0 Rows not loaded because all fields were null.
+
+
+Space allocated for bind array:               18576000 bytes(2000 rows)
+Read   buffer bytes:20000000
+
+Total logical records skipped:          0
+Total logical records read:      12383700
+Total logical records rejected:         0
+Total logical records discarded:        0
+
+Run began on Tue Nov 26 14:35:23 2019
+Run ended on Tue Nov 26 15:14:28 2019
+
+Elapsed time was:     00:39:05.24
+CPU time was:         00:04:30.72

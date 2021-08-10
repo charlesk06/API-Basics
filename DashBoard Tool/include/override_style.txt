@@ -1,0 +1,4 @@
+table.dataTable tbody th,
+table.dataTable tbody td {
+  padding: 0.5px 10px;
+}
