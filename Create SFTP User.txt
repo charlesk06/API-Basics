@@ -1,0 +1,21 @@
+1. Add user
+# adduser --shell /bin/false tapsoa
+
+2.set Password
+
+# passwd tapsoa
+
+3. make a path or directory for that user
+
+# mkdir -p /data/exchangefiles/tapsoa
+
+4. give owneship of that user to a created directory or path
+# cd /data/exchangefiles/
+# chown tapsoa:tapsoa tapsoa
+
+5. locate the working directory of that user
+
+# sudo usermod -d /data/exchangefiles/tapsoa tapsoa
+
+Test to login from AG
+sftp username@41.222.176.210
