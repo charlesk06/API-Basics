@@ -1,0 +1,193 @@
+{
+	"info": {
+		"_postman_id": "ce129db3-4e11-4a31-90fb-074d2f326ef6",
+		"name": "APIChainingDemo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET-Reqs",
+			"item": [
+				{
+					"name": "List-Users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//create a varriable to store the response\r",
+									"jsonData = JSON.parse(responseBody)\r",
+									"//a variable hold a data using jsonpath finde(jspath)\r",
+									"fname = jsonData.data[4].first_name\r",
+									"//set a variable data into env\r",
+									"pm.environment.set(\"username1\",fname);\r",
+									"console.log(fname)\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{endpoint}}/users?page=2",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PUT",
+			"item": [
+				{
+					"name": "UpdateUser",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"name\": \"{{username1}}\",\r\n\t\"job\": \"zion resident\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://reqres.in/api/users/2",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "XMLPOST",
+			"item": [
+				{
+					"name": "xmlpost",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"xml to json response\", function(){\r",
+									"var jsonData = xml2Json(responseBody);\r",
+									"\tconsole.log(jsonData);\r",
+									"\r",
+									"\tconsole.log(\"Fahrenheit\",jsonData['soap:Envelope']['soap:Body']['FahrenheitToCelsiusResponse']['FahrenheitToCelsiusResult']);\r",
+									"\t//-- for later user => : pm.expect(jsonData['soap:Envelope']['soap:Body']['FahrenheitToCelsiusResponse']['FahrenheitToCelsiusResult']).to.eql(\"38\")\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Translate xml req into json req\r",
+									"var xmlData = xml2Json(pm.request.body)\r",
+									"console.log(xmlData);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n\t<soap:Body>\r\n\t\t<FahrenheitToCelsius xmlns=\"https://www.w3schools.com/xml/\">\r\n\t\t\t<Fahrenheit>100.4</Fahrenheit>\r\n\t\t</FahrenheitToCelsius>\r\n\t</soap:Body>\r\n</soap:Envelope>\r\n",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint3}}/xml/tempconvert.asmx",
+							"host": [
+								"{{endpoint3}}"
+							],
+							"path": [
+								"xml",
+								"tempconvert.asmx"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "12345",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{username}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
