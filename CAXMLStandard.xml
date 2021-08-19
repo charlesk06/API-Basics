@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<exp:Export Version="3.0"
+    xmlns:L7p="http://www.layer7tech.com/ws/policy"
+    xmlns:exp="http://www.layer7tech.com/ws/policy/export" xmlns:wsp="http://schemas.xmlsoap.org/ws/2002/12/policy">
+    <exp:References>
+        <CustomAssertionReference RefType="com.l7tech.console.policy.exporter.CustomAssertionReference">
+            <CustomAssertionName>Tigo Token Generator - Encrypt</CustomAssertionName>
+        </CustomAssertionReference>
+    </exp:References>
+    <wsp:Policy xmlns:L7p="http://www.layer7tech.com/ws/policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2002/12/policy">
+        <wsp:All wsp:Usage="Required">
+            <L7p:AuditAssertion>
+                <L7p:SaveRequest booleanValue="true"/>
+                <L7p:SaveResponse booleanValue="true"/>
+            </L7p:AuditAssertion>
+            <L7p:AuditDetailAssertion>
+                <L7p:Detail stringValue="Request:${request.mainpart}"/>
+            </L7p:AuditDetailAssertion>
+            <L7p:RequestXpathAssertion>
+                <L7p:VariablePrefix stringValue="MobileNumber"/>
+                <L7p:XpathExpression xpathExpressionValue="included">
+                    <L7p:Expression stringValue="//MSISDN"/>
+                    <L7p:Namespaces mapValue="included">
+                        <L7p:entry>
+                            <L7p:key stringValue="s"/>
+                            <L7p:value stringValue="http://schemas.xmlsoap.org/soap/envelope/"/>
+                        </L7p:entry>
+                    </L7p:Namespaces>
+                    <L7p:XpathVersion xpathVersion="XPATH_1_0"/>
+                </L7p:XpathExpression>
+            </L7p:RequestXpathAssertion>
+            <L7p:RequestXpathAssertion>
+                <L7p:VariablePrefix stringValue="ReqTXID"/>
+                <L7p:XpathExpression xpathExpressionValue="included">
+                    <L7p:Expression stringValue="//TXNID"/>
+                    <L7p:Namespaces mapValue="included">
+                        <L7p:entry>
+                            <L7p:key stringValue="s"/>
+                            <L7p:value stringValue="http://schemas.xmlsoap.org/soap/envelope/"/>
+                        </L7p:entry>
+                    </L7p:Namespaces>
+                    <L7p:XpathVersion xpathVersion="XPATH_1_0"/>
+                </L7p:XpathExpression>
+            </L7p:RequestXpathAssertion>
+            <L7p:RequestXpathAssertion>
+                <L7p:VariablePrefix stringValue="controlNo"/>
+                <L7p:XpathExpression xpathExpressionValue="included">
+                    <L7p:Expression stringValue="//CUSTOMERREFERENCEID"/>
+                    <L7p:Namespaces mapValue="included">
+                        <L7p:entry>
+                            <L7p:key stringValue="s"/>
+                            <L7p:value stringValue="http://schemas.xmlsoap.org/soap/envelope/"/>
+                        </L7p:entry>
+                    </L7p:Namespaces>
+                    <L7p:XpathVersion xpathVersion="XPATH_1_0"/>
+                </L7p:XpathExpression>
+            </L7p:RequestXpathAssertion>
+            <L7p:RequestXpathAssertion>
+                <L7p:VariablePrefix stringValue="payerName"/>
+                <L7p:XpathExpression xpathExpressionValue="included">
+                    <L7p:Expression stringValue="//PAYERNAME"/>
+                    <L7p:Namespaces mapValue="included">
+                        <L7p:entry>
+                            <L7p:key stringValue="s"/>
+                            <L7p:value stringValue="http://schemas.xmlsoap.org/soap/envelope/"/>
+                        </L7p:entry>
+                    </L7p:Namespaces>
+                    <L7p:XpathVersion xpathVersion="XPATH_1_0"/>
+                </L7p:XpathExpression>
+            </L7p:RequestXpathAssertion>
+            <L7p:RequestXpathAssertion>
+                <L7p:VariablePrefix stringValue="amount"/>
+                <L7p:XpathExpression xpathExpressionValue="included">
+                    <L7p:Expression stringValue="//AMOUNT"/>
+                    <L7p:Namespaces mapValue="included">
+                        <L7p:entry>
+                            <L7p:key stringValue="s"/>
+                            <L7p:value stringValue="http://schemas.xmlsoap.org/soap/envelope/"/>
+                        </L7p:entry>
+                    </L7p:Namespaces>
+                    <L7p:XpathVersion xpathVersion="XPATH_1_0"/>
+                </L7p:XpathExpression>
+            </L7p:RequestXpathAssertion>
+            <L7p:CustomAssertion>
+                <L7p:base64SerializedValue>rO0ABXNyADFjb20ubDd0ZWNoLnBvbGljeS5hc3NlcnRpb24uQ3VzdG9tQXNzZXJ0aW9uSG9sZGVyZtcreFwddTICAAlaAAxpc1VpQXV0b09wZW5MAApjYXRlZ29yaWVzdAAPTGphdmEvdXRpbC9TZXQ7TAAIY2F0ZWdvcnl0ACpMY29tL2w3dGVjaC9wb2xpY3kvYXNzZXJ0aW9uL2V4dC9DYXRlZ29yeTtMAA9jdXN0b21Bc3NlcnRpb250ADFMY29tL2w3dGVjaC9wb2xpY3kvYXNzZXJ0aW9uL2V4dC9DdXN0b21Bc3NlcnRpb247TAAUY3VzdG9tTW9kdWxlRmlsZU5hbWV0ABJMamF2YS9sYW5nL1N0cmluZztMAA9kZXNjcmlwdGlvblRleHRxAH4ABEwAD3BhbGV0dGVOb2RlTmFtZXEAfgAETAAOcG9saWN5Tm9kZU5hbWVxAH4ABEwAHnJlZ2lzdGVyZWRDdXN0b21GZWF0dXJlU2V0TmFtZXEAfgAEeHIAJWNvbS5sN3RlY2gucG9saWN5LmFzc2VydGlvbi5Bc3NlcnRpb27bX2OZPL2isQIAAloAB2VuYWJsZWRMABBhc3NlcnRpb25Db21tZW50dAAvTGNvbS9sN3RlY2gvcG9saWN5L2Fzc2VydGlvbi9Bc3NlcnRpb24kQ29tbWVudDt4cAFwAXNyABFqYXZhLnV0aWwuSGFzaFNldLpEhZWWuLc0AwAAeHB3DAAAAAI/QAAAAAAAAXNyAChjb20ubDd0ZWNoLnBvbGljeS5hc3NlcnRpb24uZXh0LkNhdGVnb3J5WrCcZaFE/jUCAAJJAAVteUtleUwABm15TmFtZXEAfgAEeHAAAAALdAAQQ3VzdG9tQXNzZXJ0aW9uc3hwc3IAPHphLmNhYWZyaWNhLmN1c3RvbS50aWdvLnRva2VuLlRpZ29TZWNUb2tlbkdlbmVyYXRvckFzc2VydGlvbn+Y7bMaLPf/AgAFTAAbT1VUUFVUX1NUUklOR19WQVJJQUJMRV9OQU1FcQB+AARMAAtjaGFubmVsQ29kZXEAfgAETAALY2hhbm5lbE5hbWVxAH4ABEwAD2NoYW5uZWxQYXNzd29yZHEAfgAETAAJcmVxdWVzdElEcQB+AAR4cHQAD3RpZ29Ub2tlblN0cmluZ3QABVRHMDUzdAAbVElHTyAtIE1JQyBUYW56YW5pYSBMaW1pdGVkdAAPeDM0UWprOz5BN0VeP2RydAARJHtSZXFUWElELnJlc3VsdH10ACJUaWdvU2VjVG9rZW5HZW5lcmF0b3JBc3NlcnRpb24uamFydAA/R2VuZXJhdGUgQUVTIFNlY3VyaXR5IFRva2VuIGZvciBaYW56aWJhciBHb3Zlcm5tZW50IEludGVncmF0aW9ucHBw</L7p:base64SerializedValue>
+            </L7p:CustomAssertion>
+            <L7p:SetVariable>
+                <L7p:Base64Expression stringValue="JHtjb250cm9sTm8ucmVzdWx0fQ=="/>
+                <L7p:VariableToSet stringValue="cacheKey"/>
+            </L7p:SetVariable>
+            <wsp:OneOrMore wsp:Usage="Required">
+                <wsp:All wsp:Usage="Required">
+                    <L7p:CacheLookup>
+                        <L7p:CacheEntryKey stringValue="${cacheKey}"/>
+                        <L7p:CacheId stringValue="ZnzParamsStore"/>
+                        <L7p:ContentTypeOverride stringValue=""/>
+                        <L7p:MaxEntryAgeSeconds stringValue="1000"/>
+                        <L7p:OtherTargetMessageVariable stringValue="cacheValues"/>
+                        <L7p:Target target="OTHER"/>
+                    </L7p:CacheLookup>
+                    <L7p:ComparisonAssertion>
+                        <L7p:Expression1 stringValue="${cacheValues.mainpart}"/>
+                        <L7p:Expression2 stringValue="0"/>
+                        <L7p:Negate booleanValue="true"/>
+                        <L7p:Operator operator="EMPTY"/>
+                        <L7p:Predicates predicates="included">
+                            <L7p:item binary="included">
+                                <L7p:Negated booleanValue="true"/>
+                                <L7p:Operator operator="EMPTY"/>
+                                <L7p:RightValue stringValue="0"/>
+                            </L7p:item>
+                        </L7p:Predicates>
+                    </L7p:ComparisonAssertion>
+                    <L7p:SetVariable>
+                        <L7p:Base64Expression stringValue="JHtjYWNoZVZhbHVlcy5tYWlucGFydH0="/>
+                        <L7p:VariableToSet stringValue="ZnzParams"/>
+                    </L7p:SetVariable>
+                    <L7p:Split>
+                        <L7p:InputVariable stringValue="ZnzParams"/>
+                        <L7p:OutputVariable stringValue="cacheParts"/>
+                        <L7p:SplitPattern stringValue="-"/>
+                    </L7p:Split>
+                    <L7p:SetVariable>
+                        <L7p:Base64Expression stringValue="JHtjYWNoZVBhcnRzWzBdfQ=="/>
+                        <L7p:VariableToSet stringValue="vdResponseId"/>
+                    </L7p:SetVariable>
+                    <L7p:SetVariable>
+                        <L7p:Base64Expression stringValue="JHtjYWNoZVBhcnRzWzFdfQ=="/>
+                        <L7p:VariableToSet stringValue="creditAccount"/>
+                    </L7p:SetVariable>
+                    <L7p:SetVariable>
+                        <L7p:Base64Expression stringValue="ew0KICAgImNvbnRyb2xObyI6ICIke2NvbnRyb2xOby5yZXN1bHR9IiwNCiAgICJyZXF1ZXN0SWQiOiAiJHtSZXFUWElELnJlc3VsdH0iLA0KICAgImNoYW5uZWxDb2RlIjogIlRHMDUzIiwNCiAgICJ2ZFJlc3BvbnNlSWQiOiAiJHt2ZFJlc3BvbnNlSWR9IiwNCiAgICJjcmVkaXRBY2NvdW50IjogIiR7Y3JlZGl0QWNjb3VudH0iLA0KICAgImFtb3VudCI6ICIke2Ftb3VudC5yZXN1bHR9IiwNCiAgICJjdXJyZW5jeSI6ICJUWlMiLA0KICAgInBheW1lbnRNZXRob2QiOiAiVFAiLA0KICAgImNiRmxhZyI6ICIxIiwNCiAgICJjbEZsYWciOiAiMSIsDQogICAicGF5ZXJOYW1lIjogIiR7cGF5ZXJOYW1lLnJlc3VsdH0iLA0KICAgIm1vYmlsZU5vIjogIjEiLA0KICAgImVtYWlsIjogIjEiLA0KICAgImRlYml0QWNjb3VudCI6IjAyMDEwMDAwMDAwMDAxNTgxNzAwMSIsDQogICAicHNwUmVmZXJlbmNlSWQiOiIxIiwNCiAgICJzZWN1cml0eUNvZGUiOiAiJHt0aWdvVG9rZW5TdHJpbmd9Ig0KfQ=="/>
+                        <L7p:ContentType stringValue="application/json; charset=utf-8"/>
+                        <L7p:DataType variableDataType="message"/>
+                        <L7p:VariableToSet stringValue="request"/>
+                    </L7p:SetVariable>
+                    <L7p:HttpRoutingAssertion>
+                        <L7p:FailOnErrorStatus booleanValue="false"/>
+                        <L7p:ProtectedServiceUrl stringValue="http://154.127.10.6:8181/realbus_api/ax/payment/post"/>
+                        <L7p:ProxyPassword stringValueNull="null"/>
+                        <L7p:ProxyUsername stringValueNull="null"/>
+                        <L7p:RequestHeaderRules httpPassthroughRuleSet="included">
+                            <L7p:ForwardAll booleanValue="true"/>
+                            <L7p:Rules httpPassthroughRules="included">
+                                <L7p:item httpPassthroughRule="included">
+                                    <L7p:Name stringValue="Cookie"/>
+                                </L7p:item>
+                                <L7p:item httpPassthroughRule="included">
+                                    <L7p:Name stringValue="SOAPAction"/>
+                                </L7p:item>
+                            </L7p:Rules>
+                        </L7p:RequestHeaderRules>
+                        <L7p:RequestParamRules httpPassthroughRuleSet="included">
+                            <L7p:ForwardAll booleanValue="true"/>
+                            <L7p:Rules httpPassthroughRules="included"/>
+                        </L7p:RequestParamRules>
+                        <L7p:ResponseHeaderRules httpPassthroughRuleSet="included">
+                            <L7p:Rules httpPassthroughRules="included">
+                                <L7p:item httpPassthroughRule="included">
+                                    <L7p:Name stringValue="Set-Cookie"/>
+                                </L7p:item>
+                            </L7p:Rules>
+                        </L7p:ResponseHeaderRules>
+                    </L7p:HttpRoutingAssertion>
+                    <L7p:JsonTransformation>
+                        <L7p:RootTagString stringValue="PaymentResponse"/>
+                        <L7p:Transformation transformation="JSON_to_XML"/>
+                    </L7p:JsonTransformation>
+                    <L7p:AuditDetailAssertion>
+                        <L7p:Detail stringValueReference="inline"><![CDATA[IP Address : ${request.tcp.remoteAddress}
+Host : ${request.tcp.remoteHost}
+Time of request : ${request.time}]]></L7p:Detail>
+                    </L7p:AuditDetailAssertion>
+                </wsp:All>
+                <wsp:All wsp:Usage="Required">
+                    <L7p:HardcodedResponse>
+                        <L7p:Base64ResponseBody stringValue="PFBheW1lbnRSZXNwb25zZT4KICAgIDxzdGF0dXNJZD4tMTwvc3RhdHVzSWQ+CiAgICA8c3RhdHVzTWVzc2FnZT5ObyBBdmFpbGFibGUgY2FjaGVkIHZhbHVlczwvc3RhdHVzTWVzc2FnZT4KPC9QYXltZW50UmVzcG9uc2U+"/>
+                        <L7p:EarlyResponse booleanValue="true"/>
+                    </L7p:HardcodedResponse>
+                </wsp:All>
+            </wsp:OneOrMore>
+            <L7p:AddHeader>
+                <L7p:Enabled booleanValue="false"/>
+                <L7p:HeaderName stringValue="Security-Code"/>
+                <L7p:HeaderValue stringValue="${tigoTokenString}"/>
+                <L7p:RemoveExisting booleanValue="true"/>
+            </L7p:AddHeader>
+            <L7p:SymmetricKeyEncryptionDecryption>
+                <L7p:Algorithm stringValue="AES/GCM/NoPadding"/>
+                <L7p:Enabled booleanValue="false"/>
+                <L7p:Iv stringValue=""/>
+                <L7p:Key stringValue="${keyb64}"/>
+                <L7p:PgpPassPhrase stringValue=""/>
+                <L7p:Text stringValue="${input64}"/>
+            </L7p:SymmetricKeyEncryptionDecryption>
+            <L7p:HardcodedResponse>
+                <L7p:Base64ResponseBody stringValue="c2VjdXJpdHlDb2RlOiR7dGlnb1Rva2VuU3RyaW5nfQo="/>
+                <L7p:EarlyResponse booleanValue="true"/>
+                <L7p:Enabled booleanValue="false"/>
+                <L7p:ResponseContentType stringValue="text/plain; charset=UTF-8"/>
+            </L7p:HardcodedResponse>
+        </wsp:All>
+    </wsp:Policy>
+</exp:Export>
