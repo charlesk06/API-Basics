@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+   <xsl:template match="/">
+      <TCSReply>
+         <Result>0</Result>
+         <Message>
+            <xsl:value-of select="//billDescription" />
+         </Message>
+         <!-- Amount due -->
+         <param1>
+            <xsl:value-of select="//amount" />
+         </param1>
+         <param2>Success</param2>
+         <!-- Name -->
+         <param3>
+            <xsl:value-of select="//payerName" />
+         </param3>
+         <param4>
+            <xsl:value-of select="//gatewayName" />
+         </param4>
+         <param5>Reserved ext4</param5>
+         <param6>Reserved ext5</param6>
+         <param7>
+            <xsl:choose>
+               <xsl:when test="//paymentOption = 'FULL' or //paymentOption = 'EXACT'">FULL</xsl:when>
+               <xsl:when test="//paymentOption = 'PARTIAL' or //paymentOption = 'LIMITED' or //paymentOption = 'INFINITY'">PARTIAL</xsl:when>
+               <xsl:otherwise>
+                  <xsl:value-of select="//paymentOption" />
+               </xsl:otherwise>
+            </xsl:choose>
+         </param7>
+         <param8>010100</param8>
+      </TCSReply>
+   </xsl:template>
+</xsl:stylesheet>
