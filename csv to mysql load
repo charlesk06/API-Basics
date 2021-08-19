@@ -1,0 +1,13 @@
+
+load data infile 'C:/xampp/htdocs/SendnotificationUI/loading/bpystats.csv' into table bpy_stats fields terminate by ',' lines terminated by '\n' (count,file_status_id,uploaded_date,hour);
+
+
+
+export to csv.
+SELECT order_id,product_name,qty
+FROM orders
+WHERE foo = 'bar'
+INTO OUTFILE '/var/lib/mysql-files/orders.csv'
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n';
